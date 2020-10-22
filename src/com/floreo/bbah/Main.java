@@ -1,25 +1,20 @@
 package com.floreo.bbah;
+import java.io.IOException;
+import java.util.Scanner;
 
-import com.floreo.bbah.network.Slack;
 
 public class Main {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
         Bot myBot = new Bot();
+        System.out.println("Please choose an pokemon number:");
+        //myBot.testApi();
 
-        myBot.testApi();
-
-        myBot.listChannels();
-
-        myBot.listMessages(Slack.BOTS_CHANNEL_ID);
-
-
-        // Post "Hello, world!" to the #bots channel
-        //myBot.sendMessage("Hello, world!");
-
-        // Post a pineapple photo to the #bots channel
-        //myBot.sendMessage("http://weknowyourdreams.com/images/pineapple/pineapple-07.jpg");
+        Scanner sc = new Scanner(System.in);
+        int input = sc.nextInt();
+        String output = myBot.findPokemonByNumber(input);
+        myBot.sendMessageToBotsChannel(output);
 
     }
 }
+
